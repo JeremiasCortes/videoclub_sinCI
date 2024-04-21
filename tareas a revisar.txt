@@ -1,0 +1,22 @@
+· Categorías:
+    · Alta          Hecho
+    · Baja          Hecho
+    · Modificar     Hecho
+· Clientes:
+    · Alta          Hecho
+    · Baja          Hecho
+    · Modificar     Hecho
+· Peliculas:
+    · Alta          Hecho
+    · Baja          Hecho
+    · Modificar     Hecho
+
+-------------------------------------------------------------------------------------------------
+
+· Cambiar la interfaz de alta.php para que no sean otra página web más, sino un popup o modal. (Hecho)
+· Cambiar la interfaz de modificar.php para que sea también un popup o modal. Además este requisará de uso de AJAX.
+
+· A la hora de hacer las altas de las películas, con un seleccionable que se le pueda dar el valor de categoría.
+· Que se pueda establecer más de una categoría a las películas
+
+· Cuando se vaya a intentar a eliminar un registro, se debe preguntar si se está seguro de eliminarlo. (Hecho)
