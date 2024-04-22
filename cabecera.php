@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="dark">
 
 <head>
     <meta charset="utf-8">
@@ -13,19 +13,23 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 </head>
 
 <style>
     .banner-image {
         background-image: url('img/banner-img.jpg');
         background-size: cover;
+        filter: hue-rotate(325deg)
     }
 </style>
 </head>
 
-<body>
+<body class="bg-primary">
     <!-- Navbar  -->
-    <nav class="navbar bg-primary fixed-top navbar-expand-lg navbar-dark p-md-3">
+    <nav class="navbar bg-primary navbar-expand-lg navbar-dark p-md-3">
         <div class="container">
             <a class="navbar-brand" href="index.php"><i class="bi bi-disc-fill"> Érase una vez en un DVD</i></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,8 +52,5 @@
             </div>
         </div>
     </nav>
-
-    
-</body>
-
-</html>
+    <!-- End Navbar -->
+    <!-- NO CERRAR LAS ETIQUETAS, se cierran en el pie de página -->

@@ -15,77 +15,92 @@ $result = $conn->query($sql);
 ?>
 
 <?php include 'cabecera.php'; ?>
+<div class="contenedor bg-light">
 
-<div class=" table-responsive">
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn btn-outline-info mt-5 mb-3" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1">Nueva Película <i class="bi bi-window-plus"></i></button>
+  </div>
 
-  <a class="btn btn-info mt-5 float-end margen-inferior altas" data-bs-toggle="modal" data-bs-target="#exampleModal1">Nueva Película <i class="bi bi-window-plus"></i></a>
-
-  <table class="table table-striped table-hover table-dark text-center align-middle">
-    <thead>
-      <th>Id</th>
-      <th>Nombre</th>
-      <th>Dirección</th>
-      <th>Categoria</th>
-      <th>Descripción</th>
-      <th>Modificar</th>
-      <th>Eliminar</th>
-    </thead>
-    <tbody>
-      <?php if ($result->num_rows > 0) : ?>
-        <?php while ($row = $result->fetch_assoc()) : ?>
-          <tr>
-            <td><?= $row['peliculaId']; ?></td>
-            <td><?= $row['peliculaNom']; ?></td>
-            <td><?= $row['peliculaDireccion']; ?></td>
-            <td><?= $row['categoriaNom']; ?></td>
-            <td><?= $row['peliculaDescripcion']; ?></td>
-            <td class="modificar" data-id="<?= $row['peliculaId']; ?>" data-nom="<?= $row['peliculaNom']; ?>" data-direccion="<?= $row['peliculaDireccion']; ?>" data-categoria="<?= $row['categoriaNom']; ?>" data-categoriaid="<?= $row['categoriaId']; ?>" data-descripcion="<?= $row['peliculaDescripcion']; ?>">
-
-              <a href="#" class='btn btn-primary modificar'>
-                <i class="bi bi-pencil-square"></i>
-              </a>
-            </td>
-            <td>
-              <a class="eliminar btn btn-primary" href="peliculaEliminar.php?id=<?= $row['peliculaId']; ?>"><i class="bi bi-trash3-fill"></i></a>
-            </td>
-          </tr>
-        <?php endwhile; ?>
-      <?php else : ?>
-        No hay ningún cliente registrado.
-      <?php endif; ?>
-    </tbody>
-  </table>
-</div>
-
-<?php include 'pie.php'; ?>
-
-<form action="peliculaModificar.php" method="post" id="formModificar">
-  <input type="hidden" name="id">
-  <input type="hidden" name="nom">
-  <input type="hidden" name="direccion">
-  <input type="hidden" name="categoria">
-  <input type="hidden" name="categoriaid">
-  <input type="hidden" name="descripcion">
-</form>
-
-<!-- Modal para alta de nueva película -->
-<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="false">
-<div class="modal-dialog modal-lg">
-    <div class="modal-content" id="alta">
-      <?php include 'peliculaAlta.php'; ?>
+  <div class="container text-center">
+    <div class="row row-cols-3">
+      <div class="col"></div>
+      <div class="col">
+      </div>
+      <div class="col"></div>
     </div>
   </div>
-</div>
+  <div class=" table-responsive bg-light">
 
-<!-- Modal para modificar película existente -->
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="false">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content" id="modificar">
-      <?php include 'peliculaModificar.php'; ?>
+
+    <table class="table table-striped table-hover table-dark text-center align-middle">
+      <thead>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Categoria</th>
+        <th>Descripción</th>
+        <th>Modificar</th>
+        <th>Eliminar</th>
+      </thead>
+      <tbody>
+        <?php if ($result->num_rows > 0) : ?>
+          <?php while ($row = $result->fetch_assoc()) : ?>
+            <tr>
+              <td><?= $row['peliculaId']; ?></td>
+              <td><?= $row['peliculaNom']; ?></td>
+              <td><?= $row['peliculaDireccion']; ?></td>
+              <td><?= $row['categoriaNom']; ?></td>
+              <td><span class="d-inline-block text-truncate" style="max-width: 500px;">
+                  <?php echo $row['peliculaDescripcion']; ?>
+                </span></td>
+              <td class="modificar" data-id="<?= $row['peliculaId']; ?>" data-nom="<?= $row['peliculaNom']; ?>" data-direccion="<?= $row['peliculaDireccion']; ?>" data-categoria="<?= $row['categoriaNom']; ?>" data-categoriaid="<?= $row['categoriaId']; ?>" data-descripcion="<?= $row['peliculaDescripcion']; ?>">
+
+                <a href="#" class='btn btn-outline-primary modificar'>
+                  <i class="bi bi-pencil-square"></i>
+                </a>
+              </td>
+              <td>
+                <a class="eliminar btn btn-outline-primary" href="peliculaEliminar.php?id=<?= $row['peliculaId']; ?>"><i class="bi bi-trash3-fill"></i></a>
+              </td>
+            </tr>
+          <?php endwhile; ?>
+        <?php else : ?>
+          No hay ningún cliente registrado.
+        <?php endif; ?>
+      </tbody>
+    </table>
+  </div>
+
+  <?php include 'pie.php'; ?>
+
+  <form action="peliculaModificar.php" method="post" id="formModificar">
+    <input type="hidden" name="id">
+    <input type="hidden" name="nom">
+    <input type="hidden" name="direccion">
+    <input type="hidden" name="categoria">
+    <input type="hidden" name="categoriaid">
+    <input type="hidden" name="descripcion">
+  </form>
+
+  <!-- Modal para alta de nueva película -->
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content" id="alta">
+        <?php include 'peliculaAlta.php'; ?>
+      </div>
     </div>
   </div>
-</div>
 
+  <!-- Modal para modificar película existente -->
+  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content" id="modificar">
+        <?php include 'peliculaModificar.php'; ?>
+      </div>
+    </div>
+  </div>
+
+</div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script type="text/javascript">
@@ -145,5 +160,3 @@ $result = $conn->query($sql);
     });
   });
 </script>
-
-<?php $conn->close(); ?>
